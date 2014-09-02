@@ -29,11 +29,11 @@ _example_
 	./mkmdsfs 3754b703a399552f6610e7f43c6f76aadfe86fb124a89c7029000f53cb231ceecc62b13e5e6fadfd6fd6f29bebef8ce4 /home/fred/test test.mds
 
 
-### Accessing with Several Keys
+### Accessing with Multiple Key
 
-mdsfs also supports access with several keys at the same time. Once user has one of keys, having access is possible and allowed.
+mdsfs also supports access with multiple key at the same time. Once user has one of keys, having access is possible and allowed.
 
-If you would like to create a image contains several keys, you must prepare a key file which contains several keys looked like below:
+If you would like to create a image contains several keys, you must prepare a key file which contains keys looked like below:
 
 _keys.list_
 
@@ -46,11 +46,19 @@ Then creating image with this key file:
 
 	./mkmdsfs keys.lst /home/fred/test test.mds
 
+Note that once multiple key was set, you have to remember what ordering number(00-ff) of the key you have. When you access such filesystem with the key, adding ordering number before original key will be needed.
+
+For example, trying to use the second key in previous file `keys.lst`, you should add `01` in front of key (7d7d74...) when accessing:
+
+	017d7d7450bf1b17813a8d420359cfcfb3c304754245e5c67f0fd41d867453316f473bc8d1db6a1d92d66e4e5b2ae5b45f
+
+
 ### Mount Encrypted MDSFS
 
-Just using `mdsfs` utility with a key:
+Just using `mdsfs` utility with a key as below:
 
-	./mdsfs test.mds /mnt 3754b703a399552f6610e7f43c6f76aadfe86fb124a89c7029000f53cb231ceecc62b13e5e6fadfd6fd6f29bebef8ce4
+	./mdsfs test.mds /mnt 003754b703a399552f6610e7f43c6f76aadfe86fb124a89c7029000f53cb231ceecc62b13e5e6fadfd6fd6f29bebef8ce4
+
 
 Author
 -
