@@ -22,11 +22,11 @@ mdsfs supported encryption mechanism based on blowfish algorithm, it's possible 
 
 The easy way to pack a directory and create a encrypted mdsfs image with a key:
 
-		./mkmdsfs [key] [source path] [output filepath]
+	./mkmdsfs [key] [source path] [output filepath]
 
 _example_
 
-		./mkmdsfs 3754b703a399552f6610e7f43c6f76aadfe86fb124a89c7029000f53cb231ceecc62b13e5e6fadfd6fd6f29bebef8ce4 /home/fred/test test.mds
+	./mkmdsfs 3754b703a399552f6610e7f43c6f76aadfe86fb124a89c7029000f53cb231ceecc62b13e5e6fadfd6fd6f29bebef8ce4 /home/fred/test test.mds
 
 
 ### Accessing with Several Keys
@@ -37,20 +37,20 @@ If you would like to create a image contains several keys, you must prepare a ke
 
 _keys.list_
 
-		3754b703a399552f6610e7f43c6f76aadfe86fb124a89c7029000f53cb231ceecc62b13e5e6fadfd6fd6f29bebef8ce4
-		7d7d7450bf1b17813a8d420359cfcfb3c304754245e5c67f0fd41d867453316f473bc8d1db6a1d92d66e4e5b2ae5b45f
-		fce13b298a55707781615a607b271a30711ac334d89581c02327d8744ab54e5bf65ba80719c9a9accc394be859d98257
-		223a9e285bfdb3ef179863cde29714f472e00096b836c15d8e6e12bf4575969087187ae2218e3dcbb2ac45c8a3d49741
+	3754b703a399552f6610e7f43c6f76aadfe86fb124a89c7029000f53cb231ceecc62b13e5e6fadfd6fd6f29bebef8ce4
+	7d7d7450bf1b17813a8d420359cfcfb3c304754245e5c67f0fd41d867453316f473bc8d1db6a1d92d66e4e5b2ae5b45f
+	fce13b298a55707781615a607b271a30711ac334d89581c02327d8744ab54e5bf65ba80719c9a9accc394be859d98257
+	223a9e285bfdb3ef179863cde29714f472e00096b836c15d8e6e12bf4575969087187ae2218e3dcbb2ac45c8a3d49741
 
 Then creating image with this key file:
 
-		./mkmdsfs keys.lst /home/fred/test test.mds
+	./mkmdsfs keys.lst /home/fred/test test.mds
 
 ### Mount Encrypted MDSFS
 
 Just using `mdsfs` utility with a key:
 
-		./mdsfs test.mds /mnt 3754b703a399552f6610e7f43c6f76aadfe86fb124a89c7029000f53cb231ceecc62b13e5e6fadfd6fd6f29bebef8ce4
+	./mdsfs test.mds /mnt 3754b703a399552f6610e7f43c6f76aadfe86fb124a89c7029000f53cb231ceecc62b13e5e6fadfd6fd6f29bebef8ce4
 
 Author
 -
