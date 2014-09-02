@@ -1,11 +1,12 @@
 mdsfs - Middle Stone Filesystem
+---
 
 A filesystem with encryption, based on FUSE.
 
 Utilities
 -
 
-Here is some utilities mdsfs provided:
+These utilities are provided:
 
 1. mdsfs - Utility to mount filesystem
 2. mkmdsfs - Used to format target image or block
@@ -30,7 +31,7 @@ _example_
 
 ### Accessing with Several Keys
 
-mdsfs is also supports access with several keys at the same time. Once user has one of keys, having access is possible and allowed.
+mdsfs also supports access with several keys at the same time. Once user has one of keys, having access is possible and allowed.
 
 If you would like to create a image contains several keys, you must prepare a key file which contains several keys looked like below:
 
@@ -47,7 +48,7 @@ Then creating image with this key file:
 
 ### Mount Encrypted MDSFS
 
-Just using 'mdsfs' utility with a key:
+Just using `mdsfs` utility with a key:
 
 		./mdsfs test.mds /mnt 3754b703a399552f6610e7f43c6f76aadfe86fb124a89c7029000f53cb231ceecc62b13e5e6fadfd6fd6f29bebef8ce4
 
