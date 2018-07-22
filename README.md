@@ -1,5 +1,4 @@
-mdsfs - Middle Stone Filesystem
----
+# mdsfs - Middle Stone Filesystem
 
 A filesystem with encryption, based on FUSE.
 
@@ -18,7 +17,7 @@ These utilities are provided:
 Encryption Support
 -
 
-mdsfs supported encryption mechanism based on blowfish algorithm, it's possible to encrypt filesystem with key (Length is 384-bit).
+mdsfs supported encryption mechanism based on `blowfish` algorithm, it's possible to encrypt filesystem with key (Length is 384-bit).
 
 The easy way to pack a directory and create a encrypted mdsfs image with a key:
 
@@ -31,9 +30,9 @@ _example_
 
 ### Accessing with Multiple Key
 
-mdsfs also supports access with multiple key at the same time. Once user has one of keys, having access is possible and allowed.
+Multiple access key is supported. That means you can grant more than one user to access this filesystem.
 
-If you would like to create a image contains several keys, you must prepare a key file which contains keys looked like below:
+Here is a key file for creating a filesystem image which allows multiple access keys: 
 
 _keys.list_
 
@@ -46,16 +45,28 @@ Then creating image with this key file:
 
 	./mkmdsfs keys.lst /home/fred/test test.mds
 
-Note that once multiple key was set, you have to remember what ordering number(00-ff) of the key you have. When you access such filesystem with the key, adding ordering number before original key will be needed.
+_Note that remember the ordering number(00-ff) of the access key, it is required when we access filesystem with key._
 
-For example, trying to use the second key in previous file `keys.lst`, you should add `01` in front of key (7d7d74...) when accessing:
+#### Using Access Key
 
+When you access such filesystem with the key, Adding ordering number in the head of the key is needed.
+
+For example, we are trying to use the second key in previous file `keys.lst`. We should add `01` in the head of key (7d7d74...) when accessing:
+
+```
 	017d7d7450bf1b17813a8d420359cfcfb3c304754245e5c67f0fd41d867453316f473bc8d1db6a1d92d66e4e5b2ae5b45f
+```
+
+That's wrong without `01` in the head:
+
+```
+	7d7d7450bf1b17813a8d420359cfcfb3c304754245e5c67f0fd41d867453316f473bc8d1db6a1d92d66e4e5b2ae5b45f
+```
 
 
 ### Mount Encrypted MDSFS
 
-Just using `mdsfs` utility with a key as below:
+To mount MDSFS to specific path, just using `mdsfs` utility with a key as below:
 
 	./mdsfs test.mds /mnt 003754b703a399552f6610e7f43c6f76aadfe86fb124a89c7029000f53cb231ceecc62b13e5e6fadfd6fd6f29bebef8ce4
 
